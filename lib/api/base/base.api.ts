@@ -18,7 +18,7 @@ export default class BaseApi {
         this.baseURL = new URL(baseURL); 
 
         this.defaultHeaders = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/xml'
         };
     }
 

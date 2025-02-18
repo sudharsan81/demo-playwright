@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import EchoServerAPI from '../lib/api/echoServer/echo.server.api';
 import { Auth, AuthTypes } from '../lib/api/base/base.api.types';
+import { parseStringPromise } from 'xml2js';
 
 test('Create a new resource calling endpoint with POST verb', async () => {
     const auth: Auth = {
@@ -10,23 +11,30 @@ test('Create a new resource calling endpoint with POST verb', async () => {
 
     const echoServerApi = new EchoServerAPI({});
     await echoServerApi.initialise({ auth });
+    const xmlPayload = `
+        <note>
+            <to>Dave</to>
+            <from>Joe</from>
+            <body>Be Happy</body>
+        </note>
+    `;
 
     const response = await echoServerApi.post({
         uri: '/post',
-        body: {
-            foo: 100
-        }
+        body:xmlPayload,
     });
 
     // Assert status code
     expect(response.status()).toBe(200);
 
-    // Assert response body
+    // Read Response Body
     const responseBody = await response.json();
-    expect(responseBody.json).toEqual({
-        foo: 100
-    });
-    expect(responseBody.data).toEqual({
-        foo: 100
-    });
+    const receivedXml = responseBody.data;
+
+    // Normalize both XML strings using xml2js
+    const expectedXmlParsed = await parseStringPromise(xmlPayload.trim());
+    const receivedXmlParsed = await parseStringPromise(receivedXml.trim());
+
+    // Compare the parsed XML objects
+    expect(receivedXmlParsed).toEqual(expectedXmlParsed);
 });

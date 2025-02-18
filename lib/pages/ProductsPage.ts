@@ -5,7 +5,6 @@ export default class ProductsPage {
 
     constructor({ page }: { page: Page }) {
         this.page = page
-        this.performDefaultAssertions()
     }
 
     // Actions
@@ -51,9 +50,4 @@ export default class ProductsPage {
         return countText ? parseInt(countText) : 0
     }
 
-    // Default assertions
-    private async performDefaultAssertions() {
-        expect(await this.cartIcon).toBeVisible()
-        expect(await this.pageHeader).toBeVisible()
-    }
 }

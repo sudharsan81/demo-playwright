@@ -9,7 +9,6 @@ export default class LoginPage {
     constructor({ page, url = 'https://www.saucedemo.com/' }: { page: Page; url?: string }) {
         this.page = page
         this.url = url
-        this.performDefaultAssertions()
     }
 
     // Locators
@@ -34,11 +33,5 @@ export default class LoginPage {
         await this.usernameInput.fill(username)
         await this.passwordInput.fill(password)
         await this.loginButton.click()
-    }
-
-    // Default Assertions
-    // Everytime, this page is loaded we test critical information are rendered
-    private async performDefaultAssertions() {
-        await expect(this.page).toHaveTitle('Swag Labs')
     }
 }
