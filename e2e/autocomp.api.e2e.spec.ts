@@ -9,14 +9,15 @@ chai.use(jsonSchema);
 const chaiExpect = chai.expect;
 
 test('Autocomp Service - Read All Records', async () => {
+    //  Test Preparation
     const auth: Auth = {
         authType: 'no-auth', // Autocomp Demo Server do not need any auth.
         credentials: null
     };
-
     const autocompServerApi =  new AutocompServerAPI({});
     await autocompServerApi.initialise({auth});
     
+    // Perform the test
     const response = await autocompServerApi.post({
         uri: '/api/read_all_records',
     });
@@ -30,14 +31,15 @@ test('Autocomp Service - Read All Records', async () => {
 });
 
 test('Autocomp Service - Read All Summary', async () => {
+    //  Test Preparation
     const auth: Auth = {
         authType: 'no-auth', // Autocomp Demo Server do not need any auth.
         credentials: null
     };
-
     const autocompServerApi =  new AutocompServerAPI({});
     await autocompServerApi.initialise({auth});
     
+    // Perform the test
     const response = await autocompServerApi.post({
         uri: '/api/read_all_summary',
     });

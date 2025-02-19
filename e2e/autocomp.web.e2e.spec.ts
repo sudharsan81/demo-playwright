@@ -7,15 +7,11 @@ let homePage: HomePage;
 let detailedServicePage: DetailedServicePage;
 
 test('Open Home page', async ({page}) => {
-    // 1. Initialise POM for the home page
+    // Prepare for the test
     homePage = new HomePage({ page });
 
-    // 2. Performt the test
+    // Performt the test
     await homePage.open();
-
-    // Open the detailed page for the service Id VFC1234567
-    await homePage.openServiceId({ id: 'VFC1234567'});
-    detailedServicePage = new DetailedServicePage({page})
 
     // Assert Header and Footer for Legal Compliance
     await homePage.verifyHeaderIsVisible();
@@ -26,11 +22,11 @@ test('Open Home page', async ({page}) => {
 });
 
 test('View Detailed report page', async ({page}) => {
-    // 1. Initialise POM for the home page
+    // Prepare for the test
     homePage = new HomePage({ page });
     await homePage.open();
 
-    // 2. Performt the test
+    // Performt the test
     // Open the detailed page for the service Id VFC1234567
     await homePage.openServiceId({ id: 'VFC1234567'});
     detailedServicePage = new DetailedServicePage({page});
