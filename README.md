@@ -16,17 +16,6 @@ we use this we app
 - node, version >= 23.6.1
 - npm, version >= 10.9.2
 
-## Preperation
-_This can be easily 100% automated during bootstraping._
-
-Convert open api specification from yaml to json format
-
-```bash
-npm install -g swagger-cli
-
-swagger-cli bundle ./lib/api/autocomp/autocomp.openapi.spec.yaml -o ./lib/api/autocomp/autocomp.openapi.spec.json
-```
-
 ## Run tests
 
 > Open a new ternimal.

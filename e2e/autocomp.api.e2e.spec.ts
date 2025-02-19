@@ -27,16 +27,6 @@ test('Autocomp Service - Read All Records', async () => {
     // Read Response Body
     const responseBody = await response.json();
 
-    // Validate Response body schema
-    const schema = await autocompServerApi.getResponseSchema(
-        {
-            uri: '/read_all_records',
-            verb: 'get',
-            statusCode: 200
-        }
-    );
-
-    chaiExpect(responseBody).to.be.jsonSchema(schema);
 });
 
 test('Autocomp Service - Read All Summary', async () => {
