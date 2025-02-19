@@ -39,11 +39,7 @@ export default class AutocompServerAPI extends BaseApi {
         try {
             const filePath = path.join(__dirname, '/autocomp.openapi.spec.json'); 
             const schema = await readJsonFile(filePath);
-            // console.log(`-> schema = ${JSON.stringify(schema)}`);   
-            // console.log(schema.paths[uri].verb.responses.statusCode.content['application/json'].schema);
-            console.log(schema.paths[uri].get.responses[statusCode].content['application/json'].schema)
-
-            // return schema.paths[uri].verb.responses.statusCode.content['application/json'].schema;
+            return (schema.paths[uri].get.responses[statusCode].content['application/json'].schema);
           } catch (error) {
             console.error("Error getting schema:", error);
             throw error;
