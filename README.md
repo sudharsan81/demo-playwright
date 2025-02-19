@@ -1,14 +1,31 @@
 # demo-playwright
 
-This repository demostrates how Playwright can be used for both API and WEB based e2e tests.
+This repository demostrates how Playwright test framework can be used for both API and WEB based e2e tests.
 
-For demo purpose, we call APIs endpoints hosted in https://postman-echo.com/post and access https://www.saucedemo.com/ for ui tests.
+For demo purpose, 
+
+we call these APIs endpoints 
+- https://poc-assurance-savita.azurewebsites.net/api/read_all_summary
+- https://poc-assurance-savita.azurewebsites.net/api/read_all_records
+
+we use this we app
+- https://wwwviewautocomp.z33.web.core.windows.net/index.html
 
 ## Pre-requisites
 
 - node, version >= 23.6.1
 - npm, version >= 10.9.2
 
+## Preperation
+_This can be easily 100% automated during bootstraping._
+
+Convert open api specification from yaml to json format
+
+```bash
+npm install -g swagger-cli
+
+swagger-cli bundle ./lib/api/autocomp/autocomp.openapi.spec.yaml -o ./lib/api/autocomp/autocomp.openapi.spec.json
+```
 
 ## Run tests
 

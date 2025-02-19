@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: Assurance Summary API
+  version: v1
+paths:
+  /read_all_summary:
+    get:
+      summary: Read all summary data
+      responses:
+        '200':
+          description: Successful retrieval of summary data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          description: Unique identifier for the scenario
+                        ServiceID:
+                          type: string
+                          description: Service ID
+                        IncidentID:
+                          type: string
+                          description: Incident ID
+                        AutoCompensation_Calculation:  # Corrected property name for consistency
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              Summary:
+                                type: object
+                                properties:
+                                  Summary_Workings: # Corrected property name for consistency
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        Source:
+                                          type: string
+                                          description: Source of the summary working
+                                        Reference:
+                                          type: string
+                                          description: Reference related to the summary working
+                                        Comments:
+                                          type: string
+                                          description: Comments related to the summary working
+                                  Status:
+                                    type: string
+                                    description: Status of the auto-compensation calculation (Pass/Fail)
+                              # Added to reflect the empty object in the example
+                              additionalProperties: # Allows for other properties within the array
+                                type: object
+                                description: Additional properties, if any.  Currently represented as empty objects in the example.
+                      required:
+                        - _id
+                        - ServiceID
+                        - IncidentID
+                        - AutoCompensation_Calculation
+                required:
+                  - data
+  /read_all_records:
+    get:
+      summary: Read all record data
+      responses:
+        '200':
+          description: Successful retrieval of record data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                          description: Unique identifier for the scenario
+                        ServiceID:
+                          type: string
+                          description: Service ID
+                        IncidentID:
+                          type: string
+                          description: Incident ID
+                      required:
+                        - _id
+                        - ServiceID
+                        - IncidentID
+                required:
+                  - data

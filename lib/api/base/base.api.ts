@@ -14,7 +14,7 @@ export default class BaseApi {
 
     protected auth: BaseApiTypes.Auth;
 
-    constructor({baseURL = new URL('https://example.com')} : {baseURL? : URL}) {
+    constructor({baseURL = new URL('https://poc-assurance-savita.azurewebsites.net')} : {baseURL? : URL}) {
         this.baseURL = new URL(baseURL); 
 
         this.defaultHeaders = {
